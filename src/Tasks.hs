@@ -1,6 +1,15 @@
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE Rank2Types #-}
 
+{-
+This module contains code for streaming text from files and transforming them
+into streams of bigrams.
+
+The Task, Source, and Sink types and streaming utilities come from another
+thing I wrote, FreeStream: http://niltag.net/FreeStream
+
+-}
+
 module Tasks where
 
 import Prelude hiding (map, filter)
@@ -16,8 +25,8 @@ import FreeStream
 
 -- | Emits chunks of 'T.Text' values from the supplied file handle, and
 -- terminates with 'T.empty'.
-readText :: Handle -> Source T.Text IO ()
---          ^ IO handle to read from
+readText :: Handle
+         -> Source T.Text IO () -- ^ IO handle to read from
 readText hndl = loop where
     loop = do
         ch <- lift $! T.hGetChunk hndl
@@ -37,8 +46,8 @@ toChars = do
 
 -- | Groups a stream of 'Char's into a 'T.Text' string based on the supplied
 -- predicate
-groupBy :: (Char -> Bool) -> Task Char T.Text IO ()
---         ^ predicate function. Values giving @True@ are the separators
+groupBy :: (Char -> Bool)
+        -> Task Char T.Text IO () -- ^ predicate function. Values giving @True@ are the separators
 groupBy pred = loop T.empty where
     loop acc = do
         ch <- await
