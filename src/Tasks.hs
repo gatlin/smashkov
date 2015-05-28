@@ -81,3 +81,4 @@ writeText hndl = loop where
             then return ()
             else do
                 lift $ T.hPutStr hndl ch
+                loop

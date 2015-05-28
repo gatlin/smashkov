@@ -21,5 +21,5 @@ main = do
     mp <- withFile text ReadMode $ \hndl -> do
         mp <- readBigrams hndl
         return mp
-    run $ walk mp >< take 10 >< map T.unpack >< display
+    run $ walk mp >< take 10 >< map (`T.append` "\n") >< writeText stdout
     return ()
