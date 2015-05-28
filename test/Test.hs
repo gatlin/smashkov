@@ -1,6 +1,7 @@
 {-# LANGUAGE OverloadedStrings, Rank2Types #-}
 
 import Tasks
+import Bigram
 import Criterion.Main
 import FreeStream
 
