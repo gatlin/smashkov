@@ -42,6 +42,31 @@ At your shell, assuming you've built it and it's on your path:
 2. How to build it
 ---
 
+1. Install the [Haskell Platform][hp] for your platform. Should be
+   straightforward.
+
+2. Clone this repository to, eg, `smashkov/` and `cd smashkov/`
+
+3. Run `sh prep.sh`
+
+4. Run `cabal configure && cabal build`
+
+5. `cabal run` will run the program and, by default, feed it the `sample.txt`
+   file.
+
+If you want, you can copy the `smashkov` program out ouf
+`dist/build/smashkov/smashkov` and put it in `/usr/bin` or something idgaf.
+
+3. Licensing
+---
+
+See `LICENSE` for details.
+
+4. Issues? Questions? Suggestions?
+---
+
+Please use the GitHub issue tracker or email me at <gatlin@niltag.net>.
+
 TODO
 
 [hp]: https://www.haskell.org/platform/
