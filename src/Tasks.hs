@@ -46,7 +46,7 @@ toChars = do
 
 -- | Groups a stream of 'Char's into a 'T.Text' string based on the supplied
 -- predicate
-groupBy :: (Char -> Bool -- ^ predicate function. Values giving @True@ are the separators)
+groupBy :: (Char -> Bool) -- ^ predicate function. Values giving @True@ are the separators)
         -> Task Char T.Text IO ()
 groupBy pred = loop T.empty where
     loop acc = do

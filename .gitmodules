@@ -1,0 +1,3 @@
+[submodule "thirdparty/FreeStream"]
+	path = thirdparty/FreeStream
+	url = git://github.com/gatlin/FreeStream.git
