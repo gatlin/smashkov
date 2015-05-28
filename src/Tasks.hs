@@ -25,8 +25,8 @@ import FreeStream
 
 -- | Emits chunks of 'T.Text' values from the supplied file handle, and
 -- terminates with 'T.empty'.
-readText :: Handle
-         -> Source T.Text IO () -- ^ IO handle to read from
+readText :: Handle -- ^ IO handle to read from
+         -> Source T.Text IO ()
 readText hndl = loop where
     loop = do
         ch <- lift $! T.hGetChunk hndl
@@ -46,8 +46,8 @@ toChars = do
 
 -- | Groups a stream of 'Char's into a 'T.Text' string based on the supplied
 -- predicate
-groupBy :: (Char -> Bool)
-        -> Task Char T.Text IO () -- ^ predicate function. Values giving @True@ are the separators
+groupBy :: (Char -> Bool -- ^ predicate function. Values giving @True@ are the separators)
+        -> Task Char T.Text IO ()
 groupBy pred = loop T.empty where
     loop acc = do
         ch <- await
