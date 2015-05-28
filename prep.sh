@@ -1,7 +1,7 @@
 #!/bin/bash
 
 cabal sandbox init
-git submodule update --init --recursive
+git clone https://github.com/gatlin/FreeStream.git
 cabal sandbox add-source thirdparty/FreeStream/
 cabal install --only-dependencies
 cabal configure
