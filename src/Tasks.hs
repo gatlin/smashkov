@@ -52,7 +52,7 @@ groupBy pred = loop T.empty where
 -- | Convenience function to group a stream of 'Char's along whitespace
 -- boundaries
 tokenize :: Task Char T.Text IO ()
-tokenize = groupBy isSpace
+tokenize = groupBy isSpace >< map T.toLower
 {-# INLINE tokenize #-}
 
 -- | Counts how many elements it has seen, storing the result in an 'IORef'.
