@@ -4,8 +4,8 @@
 
 module Bigram where
 
-import Tasks
-import FreeStream
+import Tubes
+import Tubes
 
 import Prelude hiding (map, take)
 import System.IO
@@ -34,7 +34,7 @@ type Bigram    = (Text, Text)
 type BigramMap = M.Map Text (M.Map Text Rational)
 
 -- | Grab all the bigrams from the given file handle and put them in a
--- 'BigramMap'. Uses functions from the Tasks module.
+-- 'BigramMap'. Uses functions from the Tubes module.
 readBigrams :: Handle -> IO BigramMap
 readBigrams hndl = reduce (\mp x -> insertBigram x mp) M.empty id go
     where

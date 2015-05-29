@@ -62,7 +62,7 @@ executable smashkov
   -- Other library packages from which modules are imported.
   build-depends:       base >=4.8 && <4.9,
                        text >= 1.2.0,
-                       freestream >= 0.3.0.0,
+                       tubes >= 0.4.0.0,
                        --hedis >= 0.6.5,
                        containers,
                        random,
@@ -84,7 +84,7 @@ benchmark test
     main-is:            Test.hs
     build-depends:      base,
                         criterion,
-                        freestream,
+                        tubes,
                         text >= 1.2
 
     default-language:    Haskell2010

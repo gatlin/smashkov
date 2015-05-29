@@ -21,7 +21,7 @@ import Control.Monad
 import Data.Char
 import Data.IORef
 
-import FreeStream
+import Tubes
 
 -- | Emits chunks of 'T.Text' values from the supplied file handle, and
 -- terminates with 'T.empty'.
@@ -35,7 +35,7 @@ readText hndl = loop where
             else yield ch >> loop
 
 -- | Breaks a 'T.Text' value into a stream of 'Char's.
-toChars :: Task T.Text Char IO ()
+toChars :: Tube T.Text Char IO ()
 toChars = do
     ch <- await
     if T.null ch
@@ -47,7 +47,7 @@ toChars = do
 -- | Groups a stream of 'Char's into a 'T.Text' string based on the supplied
 -- predicate
 groupBy :: (Char -> Bool) -- ^ predicate function. Values giving @True@ are the separators)
-        -> Task Char T.Text IO ()
+        -> Tube Char T.Text IO ()
 groupBy pred = loop T.empty where
     loop acc = do
         ch <- await
@@ -60,7 +60,7 @@ groupBy pred = loop T.empty where
 
 -- | Convenience function to group a stream of 'Char's along whitespace
 -- boundaries
-tokenize :: Task Char T.Text IO ()
+tokenize :: Tube Char T.Text IO ()
 tokenize = groupBy isSpace >< map T.toLower
 {-# INLINE tokenize #-}
 
@@ -71,7 +71,7 @@ count r = forever $! do
     lift $ modifyIORef' r $ \n -> n + 1
 
 -- | Converts a stream of arbitrary values into a stream of bigrams
-bigrams :: Task a (a, a) IO ()
+bigrams :: Tube a (a, a) IO ()
 bigrams = do
     first <- await
     loop first

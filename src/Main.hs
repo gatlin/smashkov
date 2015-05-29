@@ -5,7 +5,7 @@
 This module is just the 'main' function and some boring administrative code.
 
 The real meat is in the `Bigram.hs` and `Tasks.hs` modules, and a separate
-project of mine that I'm using called [FreeStream][1]. It is extensively
+project of mine that I'm using called [Tubes][1]. It is extensively
 documented freely licensed.
 
 [1]: http://niltag.net/FreeStream
@@ -17,7 +17,7 @@ import Prelude hiding (take, map)
 import Tasks
 import Bigram
 
-import FreeStream hiding (for)
+import Tubes hiding (for)
 import System.IO (Handle(..), withFile, IOMode(..), stdout)
 import System.Environment (getArgs)
 import qualified Data.Map.Strict as M
