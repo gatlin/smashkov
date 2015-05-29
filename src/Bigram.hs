@@ -4,7 +4,7 @@
 
 module Bigram where
 
-import Tubes
+import Tasks
 import Tubes
 
 import Prelude hiding (map, take)
