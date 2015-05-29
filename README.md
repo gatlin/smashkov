@@ -17,7 +17,7 @@ Smashmouth lyrics so this isn't my best work.
 
 At your shell, assuming you've built it and it's on your path:
 
-    $> smashkov "sample.txt" 10
+    $> smashkov -i "sample.txt" -n 10
     hey i spare some change 
     ---
     smashin' the sharpest tool in the world to arrive and clappin' man what the ground 

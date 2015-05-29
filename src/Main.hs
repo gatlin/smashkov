@@ -24,38 +24,51 @@ import qualified Data.Map.Strict as M
 import Control.Monad (forever, forM_)
 import qualified Data.Text as T
 import Control.Monad.Random
+import Options.Applicative
 
 -- * Command line option parsing stuff. Nothing interesting here.
 
 data CmdOpts = CmdOpts
     { _file :: String
-    , _genHowMany :: Int
+    , _genHowMany :: String
     }
 
+opts :: ParserInfo CmdOpts
+opts = info (parser <**> helper) (fullDesc <> progDesc d)
+    where
+        parser = CmdOpts
+            <$> strOption
+                    (   long "input"
+                    <>  short 'i'
+                    <>  value "sample.txt")
+            <*> strOption
+                    (   long "howmany"
+                    <>  short 'n'
+                    <>  value "5")
+        d = "a shitty tool for making shitty markov models"
+
 defaultOpts :: CmdOpts
-defaultOpts = CmdOpts { _file = "sample.txt", _genHowMany = 5 }
+defaultOpts = CmdOpts { _file = "sample.txt", _genHowMany = "5" }
 
 parseOpts :: [String] -> IO CmdOpts
 parseOpts args = case length args of
     0       -> return defaultOpts
     _       -> let f = args !! 0
                    n = args !! 1
-               in  return $ CmdOpts { _file = f, _genHowMany = read n }
+               in  return $ CmdOpts { _file = f, _genHowMany = n }
 
 -- * Somebody once told me ...
 
 main :: IO ()
 main = do
-    args <- getArgs             -- \
-    opts <- parseOpts args      --  +- parse command line arguments
-
+    opts' <- execParser opts
     -- open the file and read the bigrams into the appropriate structure
-    mp <- withFile (_file opts) ReadMode $ \hndl -> do
+    mp <- withFile (_file opts') ReadMode $ \hndl -> do
         mp <- readBigrams hndl
         return mp
 
     -- now, generate sentences of random length and write them to stdout
-    forM_ [1..(_genHowMany opts)] $ \_ -> do
+    forM_ [1..(read $ _genHowMany opts')] $ \_ -> do
         howMany <- evalRandIO $ getRandomR (4, 20)
         run $ walk mp >< take howMany >< map (`T.snoc` ' ') >< writeText stdout
         putStrLn "\n---"
