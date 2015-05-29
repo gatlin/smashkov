@@ -47,16 +47,6 @@ opts = info (parser <**> helper) (fullDesc <> progDesc d)
                     <>  value "5")
         d = "a shitty tool for making shitty markov models"
 
-defaultOpts :: CmdOpts
-defaultOpts = CmdOpts { _file = "sample.txt", _genHowMany = "5" }
-
-parseOpts :: [String] -> IO CmdOpts
-parseOpts args = case length args of
-    0       -> return defaultOpts
-    _       -> let f = args !! 0
-                   n = args !! 1
-               in  return $ CmdOpts { _file = f, _genHowMany = n }
-
 -- * Somebody once told me ...
 
 main :: IO ()
