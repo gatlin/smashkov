@@ -57,7 +57,8 @@ executable smashkov
   -- other-modules:       
   
   -- LANGUAGE extensions used by modules in this package.
-  other-extensions:    OverloadedStrings, Rank2Types
+  other-extensions:    OverloadedStrings, Rank2Types,
+                       RecordWildCards
   
   -- Other library packages from which modules are imported.
   build-depends:       base >=4.8 && <4.9,
