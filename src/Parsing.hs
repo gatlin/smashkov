@@ -5,12 +5,12 @@
 This module contains code for streaming text from files and transforming them
 into streams of bigrams.
 
-The Task, Source, and Sink types and streaming utilities come from another
-thing I wrote, FreeStream: http://niltag.net/FreeStream
+The Tube, Source, and Sink types and streaming utilities come from another
+thing I wrote, FreeStream: http://niltag.net/tubes
 
 -}
 
-module Tasks where
+module Parsing where
 
 import Prelude hiding (map, filter)
 import qualified Prelude as P
