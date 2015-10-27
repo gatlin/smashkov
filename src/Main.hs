@@ -5,17 +5,17 @@
 {-
 This module is just the 'main' function and some boring administrative code.
 
-The real meat is in the `Bigram.hs` and `Tasks.hs` modules, and a separate
+The real meat is in the `Bigram.hs` and `Parsing.hs` modules, and a separate
 project of mine that I'm using called [Tubes][1]. It is extensively
 documented freely licensed.
 
-[1]: http://niltag.net/FreeStream
+[1]: http://niltag.net/tubes
 -}
 
 module Main where
 
 import Prelude hiding (take, map)
-import Tasks
+import Parsing
 import Bigram
 
 import Tubes hiding (for)
