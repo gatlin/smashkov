@@ -31,7 +31,6 @@ import Options.Applicative
 
 data CmdOpts = CmdOpts
     { _file :: String
-    , _genHowMany :: String
     , _maxLen :: String
     , _minLen :: String
     }
@@ -43,11 +42,7 @@ opts = info (parser <**> helper) (fullDesc <> progDesc d)
             <$> strOption
                     (   long "input"
                     <>  short 'i'
-                    <>  value "sample.txt")
-            <*> strOption
-                    (   long "howmany"
-                    <>  short 'n'
-                    <>  value "5")
+                    <>  value "input.txt")
             <*> strOption
                     (   long "max"
                     <>  value "20" )
@@ -68,12 +63,10 @@ start CmdOpts{..} = do
 
     let min = read _minLen
     let max = read _maxLen
-    let hm  = read _genHowMany
     -- now, generate sentences of random length and write them to stdout
-    forM_ [1..hm] $ \_ -> do
-        howMany <- evalRandIO $ getRandomR (min, max)
-        run $ walk mp >< take howMany >< map (`T.snoc` ' ') >< writeText stdout
-        putStrLn "\n---"
+    howMany <- evalRandIO $ getRandomR (min, max)
+    run $ walk mp >< take howMany >< map (`T.snoc` ' ') >< writeText stdout
+    putStrLn ""
 
 main :: IO ()
 main = execParser opts >>= start
