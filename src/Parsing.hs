@@ -19,7 +19,6 @@ import qualified Data.Text.IO as T
 import System.IO
 import Control.Monad
 import Data.Char
-import Data.IORef
 
 import Tubes
 
@@ -63,12 +62,6 @@ groupBy pred = loop T.empty where
 tokenize :: Tube Char T.Text IO ()
 tokenize = groupBy isSpace >< map T.toLower
 {-# INLINE tokenize #-}
-
--- | Counts how many elements it has seen, storing the result in an 'IORef'.
-count :: IORef Int -> Sink a IO ()
-count r = forever $! do
-    it <- await
-    lift $ modifyIORef' r $ \n -> n + 1
 
 -- | Converts a stream of arbitrary values into a stream of bigrams
 bigrams :: Tube a (a, a) IO ()

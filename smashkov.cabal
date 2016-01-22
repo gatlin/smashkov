@@ -10,7 +10,7 @@ name:                markov
 -- PVP summary:      +-+------- breaking API changes
 --                   | | +----- non-breaking API additions
 --                   | | | +--- code changes with no API change
-version:             0.1.0.0
+version:             0.1.0.1
 
 -- A short (one-line) description of the package.
 synopsis:            idk yet
@@ -85,7 +85,7 @@ benchmark test
     main-is:            Test.hs
     build-depends:      base,
                         criterion,
-                        tubes,
+                        tubes >= 1.0.0.0,
                         text >= 1.2
 
     default-language:    Haskell2010
