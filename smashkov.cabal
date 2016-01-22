@@ -10,11 +10,7 @@ name:                markov
 -- PVP summary:      +-+------- breaking API changes
 --                   | | +----- non-breaking API additions
 --                   | | | +--- code changes with no API change
-<<<<<<< HEAD
-version:             0.1.0.1
-=======
 version:             0.2.0.0
->>>>>>> f643a10c7156e6bd22e46e19a4cf7239daa0c622
 
 -- A short (one-line) description of the package.
 synopsis:            idk yet
