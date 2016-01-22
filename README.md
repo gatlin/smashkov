@@ -17,27 +17,12 @@ Smashmouth lyrics so this isn't my best work.
 
 At your shell, assuming you've built it and it's on your path:
 
-    $> smashkov -i "sample.txt" -n 10
-    hey i spare some change 
-    ---
-    smashin' the sharpest tool in the world to arrive and clappin' man what the ground 
-    ---
-    we could i like it gets colder you're bundled up now you're an 
-    ---
-    never know if you might as well be walkin' on the crack puts you don't go you'll 
-    ---
-    close up mr. wizard 
-    ---
-    alive six to differ judging by the world get bored. somebody once asked could i said yep what the hell 
-    ---
-    you're still alive six to stay in the with her baby's old enough 
-    ---
-    broke up so what's 
-    ---
-    change for gas i 
-    ---
-    your brain gets dumb so don't sit back kick back and we skate is a 
-    ---
+    $> smashkov -i "input.txt" --min 50 --max 100
+    is a cool place i showed them away from you. you follow there is
+    self-sacrifice for whom there may be there may be there is a mama's
+    handkerchief is the hopeless swamps of life ain't no rational morality is
+    up, because fashion it's just to the mystical or the question "to be walkin'
+    on strike 
 
 2. How to build it
 ---
@@ -51,7 +36,7 @@ At your shell, assuming you've built it and it's on your path:
 
 4. Run `cabal configure && cabal build`
 
-5. `cabal run` will run the program and, by default, feed it the `sample.txt`
+5. `cabal run` will run the program and, by default, feed it the `input.txt`
    file.
 
 If you want, you can copy the `smashkov` program out ouf
